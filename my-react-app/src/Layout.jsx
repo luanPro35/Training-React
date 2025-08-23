@@ -8,9 +8,7 @@ const Layout = (props) => {
       {/* Added Tailwind classes */}
       <h1 className="text-2xl font-bold mb-4">{props.title}</h1>{" "}
       {/* Added Tailwind classes */}
-      <div className="mb-4">{props.children}</div>{" "}
-      {/* Added Tailwind classes */}
-      <Footer />
+      <div className="mb-4">{props.children}</div> <Footer />
     </div>
   );
 };

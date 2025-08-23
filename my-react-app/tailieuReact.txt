@@ -1,0 +1,16 @@
+1. State gồm có 2 cái: 
+-1.1 stateless functional component: component nhưng không sử dụng State
+-1.2 stateful functional component: component có sử dụng State
+1. enabling state: useState(initialize value)
+Ex: initialize value: boolean(true, false), string("LuanDev"), number(100), undefined, null, [1, 2, 3, 4]
+2. initialize state: useState(false)
+3. reading state: 
+4. update state: 
+Lưu ý: Không được gọi trong if, for, while, hoặc trong hàm con.
+-------------------------------------------------------------------------
+2. useReducer: là một React Hook được dùng để quản lí state phức tạp(thay thế cho useState khi logic cập nhật state rắc rối)
+Cú pháp: "const [state, dispatch] = useReducer(reducer, initialState);"
+state: giá trị state hiện tại.
+dispatch: hàm dùng để gửi action.
+reducer: hàm xử lý (state, action) → newState.
+initialState: giá trị khởi tạo ban đầu.
