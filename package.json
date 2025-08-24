@@ -1,6 +1,8 @@
 {
   "dependencies": {
-    "@tailwindcss/postcss": "^4.1.12"
+    "@tailwindcss/postcss": "^4.1.12",
+    "react-dom": "^19.1.1",
+    "styled-components": "^6.1.19"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
