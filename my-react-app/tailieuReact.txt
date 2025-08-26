@@ -14,3 +14,174 @@ state: giá trị state hiện tại.
 dispatch: hàm dùng để gửi action.
 reducer: hàm xử lý (state, action) → newState.
 initialState: giá trị khởi tạo ban đầu.
+---------------------------------------------------------------------------
+
+3. theme
+Sử dụng: scp là Use props inside styled-component
+== ${(props) => props.theme.color.primary}
+
+---------------------------------------------------------------------
+
+4. Tailwind
+1. Layout:
+- container: sm(>=640px), md(>=>768px), lg(>=>1024px), xl(>=>1280px), 2xl(>=>1536px)
+
+2. Box Sizing: là một thuộc tính trong CSS quy định cách trình duyệt tính kích thước của phần tử (element width & height).
+| Giá trị       | Cách tính                                    | Dùng khi nào                            |
+| ------------- | -------------------------------------------- | --------------------------------------- |
+| `content-box` | width = content (padding + border cộng thêm) | Mặc định của CSS                        |
+| `border-box`  | width = content + padding + border (gộp vào) | Thực tế dùng nhiều, dễ kiểm soát layout |
+Thường thì người ta sẽ sử dụng border-box.
+
+3. Display: 
+1. block: phần tử chiếm toàn bộ chiều ngang, luôn bắt đầu từ dòng mới
+vidu: div, p, h1->h6 là block
+2. inline: phần tử chỉ chiếm vừa đủ nội dung, nằm cùng dòng với phần tử khác
+vidu: span, a, img là inline
+3. inline-block: nằm trên cùng một dòng với các phần tử khác nhưng mà nó giống với block là nó có thể chỉnh được w, h, m, padding
+👉 Rất hay dùng khi muốn nhiều phần tử xếp hàng ngang nhưng vẫn kiểm soát kích thước.
+4. flex: biến phần tử thành flex container, các phần tử con sẽ tự sắp xếp theo trục ngang(hoạc dọc nếu đổi là flex-direction)
+5. inline-flex: giống flex
+6. grid: các phần tử con được bố trí vào hàng và cột theo grid-template-rows, grid-template-columns.
+7. inline-grid: giống grid
+8. table: phần tử hoạt động như một bảng(giống table)
+9. inline-table: giống table
+10. hidden: giống với display: none kiểu như nó sẽ ẩn đi cái đó
+
+4. Float: dùng để đẩy phần tử sang trái/phải trong bố cục, để các phần tử khác(nhất là text) có thể "bọc quanh" nó 
+Float → “đẩy” phần tử sang trái/phải, text và phần tử khác có thể bọc quanh nó.
+Clear → ép phần tử xuống dưới, tránh việc bị “vướng” vào float.
+
+5. object-fit:
+5.1 object-contain: ảnh được thu nhỏ vừa khung, nhưng giữ nguyên tỉ lệ gốc
+👉 Thường dùng khi muốn hiển thị đầy đủ ảnh mà không cắt xén.
+5.2 object-cover: Ảnh/Video được phóng to để lấp đầy khung, giữ nguyên tỉ lệ gốc
+👉 Rất hay dùng cho background hero, avatar, thumbnail.
+5.3 object-fill: Ảnh/Video kéo giãn để vừa khung, nhưng không giữ tỉ lệ gốc.
+👉 Ít dùng, chỉ khi muốn ép ảnh vừa khung bất chấp méo mó.
+5.4 object-none: Ảnh/Video không co giãn theo khung, vẫn giữ nguyên kích thước thật.
+👉 Dùng khi muốn giữ đúng kích thước gốc và cắt theo khung.
+5.5 object-scale-down: Ảnh sẽ hiển thị như none hoặc contain, tùy theo cái nào nhỏ hơn.
+
+6. object Position
+| Tailwind class        | CSS gốc                          | Ý nghĩa             |
+| --------------------- | -------------------------------- | ------------------- |
+| `object-center`       | `object-position: center;`       | Căn giữa (mặc định) |
+| `object-top`          | `object-position: top;`          | Căn phía trên       |
+| `object-bottom`       | `object-position: bottom;`       | Căn phía dưới       |
+| `object-left`         | `object-position: left;`         | Căn bên trái        |
+| `object-right`        | `object-position: right;`        | Căn bên phải        |
+| `object-left-top`     | `object-position: left top;`     | Căn góc trên trái   |
+| `object-right-top`    | `object-position: right top;`    | Căn góc trên phải   |
+| `object-left-bottom`  | `object-position: left bottom;`  | Căn góc dưới trái   |
+| `object-right-bottom` | `object-position: right bottom;` | Căn góc dưới phải   |
+
+
+7. position
+relative là cha của absolute, absolute là tổ tiên của static.
+
+8. Z-Index:
+Số càng lớn thì nó càng nằm trên
+
+9. Flexbox and grid
+| Class Tailwind     | CSS tương đương                   | Trục chính | Hướng sắp xếp | Ứng dụng thực tế                 |
+| ------------------ | --------------------------------- | ---------- | ------------- | -------------------------------- |
+| `flex-row`         | `flex-direction: row;`            | Ngang (x)  | Trái → Phải   | Navbar, list ngang               |
+| `flex-row-reverse` | `flex-direction: row-reverse;`    | Ngang (x)  | Phải → Trái   | Slider, carousel đảo ngược       |
+| `flex-col`         | `flex-direction: column;`         | Dọc (y)    | Trên → Dưới   | Sidebar, menu dọc                |
+| `flex-col-reverse` | `flex-direction: column-reverse;` | Dọc (y)    | Dưới → Trên   | Chat app (tin nhắn mới nằm cuối) |
+
+10. Flex-wrap: 
+| Class Tailwind            | CSS tương đương            | Ý nghĩa                                                                                               | Ứng dụng                                   |
+| ------------------------- | -------------------------- | ----------------------------------------------------------------------------------------------------- | ------------------------------------------ |
+| `flex-nowrap` *(default)* | `flex-wrap: nowrap;`       | Không cho xuống hàng, các item sẽ co lại để nằm trên **1 dòng duy nhất**                              | Navbar, breadcrumb                         |
+| `flex-wrap`               | `flex-wrap: wrap;`         | Cho phép item **tự động xuống hàng** khi không đủ chỗ                                                 | Gallery ảnh, danh sách sản phẩm            |
+| `flex-wrap-reverse`       | `flex-wrap: wrap-reverse;` | Giống `wrap` nhưng item **xuống hàng ngược chiều** (hàng mới xuất hiện **bên trên** thay vì bên dưới) | Một số layout đặc biệt cần đảo thứ tự hàng |
+flex-nowrap → 📦📦📦📦📦📦 (nằm hết trên 1 dòng, tràn ra ngoài nếu không đủ chỗ)
+
+flex-wrap →
+📦📦📦📦
+📦📦📦📦
+
+flex-wrap-reverse →
+📦📦📦📦 (hàng mới nằm trên)
+📦📦📦📦
+
+11. | Class Tailwind | CSS tương đương                        | Ý nghĩa                                                              | Ứng dụng                                     |
+| -------------- | -------------------------------------- | -------------------------------------------------------------------- | -------------------------------------------- |
+| `flex-1`       | `flex: 1 1 0%;`                        | Item sẽ **giãn ra chiếm đều không gian còn lại**                     | Chia cột bằng nhau (grid đơn giản)           |
+| `flex-auto`    | `flex: 1 1 auto;`                      | Item sẽ **giãn & co** dựa theo nội dung và không gian còn lại        | Layout responsive, card linh hoạt            |
+| `flex-initial` | `flex: 0 1 auto;`                      | Item **co lại vừa nội dung**, nhưng vẫn có thể thu nhỏ khi thiếu chỗ | Giữ kích thước tự nhiên nhưng vẫn co nếu cần |
+| `flex-none`    | `flex: none;` (tương đương `0 0 auto`) | Item **cố định kích thước**, không co giãn                           | Nút bấm, logo, icon trong thanh nav          |
+
+12. | Class Tailwind | CSS tương đương              | Ý nghĩa                                                     |
+| -------------- | ---------------------------- | ----------------------------------------------------------- |
+| `grow`         | `flex-grow: 1;`              | Cho phép **giãn ra chiếm hết không gian trống**             |
+| `grow-0`       | `flex-grow: 0;`              | **Không giãn** thêm, giữ kích thước hiện tại                |
+| `shrink`       | `flex-shrink: 1;` (mặc định) | Cho phép **co lại** khi container chật                      |
+| `shrink-0`     | `flex-shrink: 0;`            | **Không co lại**, giữ nguyên kích thước ngay cả khi bị chật |
+
+13. 
+| Class Tailwind    | CSS tương đương                   | Ý nghĩa                                                                                              |
+| ----------------- | --------------------------------- | ---------------------------------------------------------------------------------------------------- |
+| `justify-start`   | `justify-content: flex-start;`    | Căn các item về **bên trái** (mặc định trong flex-row)                                               |
+| `justify-center`  | `justify-content: center;`        | Căn các item vào **giữa**                                                                            |
+| `justify-end`     | `justify-content: flex-end;`      | Căn các item về **bên phải**                                                                         |
+| `justify-between` | `justify-content: space-between;` | Các item **cách đều nhau**, 2 bên ngoài **sát mép**                                                  |
+| `justify-around`  | `justify-content: space-around;`  | Các item **cách đều nhau**, nhưng 2 bên ngoài **có khoảng trống bằng 1/2 khoảng cách giữa các item** |
+| `justify-evenly`  | `justify-content: space-evenly;`  | Các item **cách đều nhau hoàn toàn**, kể cả mép ngoài                                                |
+Giả sử có 3 box trong một flex container ngang (flex-row):
+justify-start → |🟦🟩🟥 |
+justify-center → | 🟦🟩🟥 |
+justify-end → | 🟦🟩🟥|
+justify-between → |🟦 🟩 🟥|
+justify-around → | 🟦 🟩 🟥 |
+justify-evenly → | 🟦 🟩 🟥 |
+
+14. 
+| Class Tailwind   | CSS tương đương            | Ý nghĩa                                                                              |
+| ---------------- | -------------------------- | ------------------------------------------------------------------------------------ |
+| `items-start`    | `align-items: flex-start;` | Các item **căn trên cùng**                                                           |
+| `items-center`   | `align-items: center;`     | Các item **căn giữa theo chiều dọc**                                                 |
+| `items-end`      | `align-items: flex-end;`   | Các item **căn dưới cùng**                                                           |
+| `items-baseline` | `align-items: baseline;`   | Các item **căn theo baseline của text** (hữu ích khi có chữ với font-size khác nhau) |
+| `items-stretch`  | `align-items: stretch;`    | Các item **giãn đầy chiều cao container** (mặc định nếu không set height cho item)   |
+Minh họa trực quan (ví dụ với flex-row, tức là trục ngang)
+items-start →
+🟦
+🟩
+🟥 (tất cả dính trên đầu container)
+items-center →
+🟦
+🟩
+🟥 (tất cả ở giữa)
+items-end →
+🟦
+🟩
+🟥 (tất cả dính dưới cùng)
+
+15.
+| Class Tailwind    | CSS tương đương                 | Ý nghĩa                                                  |
+| ----------------- | ------------------------------- | -------------------------------------------------------- |
+| `content-start`   | `align-content: flex-start;`    | Các hàng dính trên cùng                                  |
+| `content-center`  | `align-content: center;`        | Các hàng căn giữa theo chiều dọc                         |
+| `content-end`     | `align-content: flex-end;`      | Các hàng dính dưới cùng                                  |
+| `content-between` | `align-content: space-between;` | Các hàng dàn ra, khoảng trống chỉ ở **giữa**             |
+| `content-around`  | `align-content: space-around;`  | Các hàng dàn đều, có khoảng trống 2 bên (nhỏ hơn ở giữa) |
+| `content-evenly`  | `align-content: space-evenly;`  | Các hàng dàn đều, khoảng cách 2 bên và giữa bằng nhau    |
+-----------------------------------------------------------------------------
+
+5. setInverval và setTimeout
+setTimeout = chạy 1 lần sau khoảng delay.
+setInterval = chạy nhiều lần cách nhau khoảng delay.
+
+6. useEffect và useLayoutEffect
+useEffect: cho side effects bình thường (API, event, timeout...).
+useLayoutEffect: cho side effects liên quan layout/UI ngay lập tức.
+✅ Nên dùng cái nào?
+Mặc định → dùng useEffect (nhẹ hơn, không block UI).
+Chỉ dùng useLayoutEffect khi bạn cần:
+Đo đạc kích thước, vị trí DOM.
+Thay đổi style DOM ngay trước khi browser paint để tránh nhấp nháy.
+useEffect: Sau khi render và paint
+useLayoutEffect: Sau render, trước khi paint
