@@ -1,14 +1,6 @@
-import React, { useState } from "react";
-import Child from "../Child";
-
+import React from "react";
+import GraphqlComponent from "../Graphql";
 const App = () => {
-  const [count, setCount] = useState(0);
-  return (
-    <div>
-      <Child name="John" />
-      <button onClick={() => setCount(count + 1)}>Increase Count</button>
-    </div>
-  );
+  return <GraphqlComponent />;
 };
-
 export default App;
